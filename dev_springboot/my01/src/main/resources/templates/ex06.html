@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div th:replace="~{fragments/gohome :: goHome}"></div>
+    <h2>붕어빵</h2>
+    <p th:each="bungs : ${bungs}" th:text="${bungs.flavor}"></p>
+    <p th:each="bungs : ${bungs}" th:text="${bungs.price}"></p>
+    <p th:each="bungs : ${bungs}" th:text="${#temporals.format(bungs.madeDate, 'yyyy-MM-dd')}"></p>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

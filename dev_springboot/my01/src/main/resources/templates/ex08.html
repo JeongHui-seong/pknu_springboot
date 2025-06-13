@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[get] Path variable 사용</title>
+</head>
+<body>
+    <div th:replace="~{fragments/gohome :: goHome}"></div>
+    <fieldset>
+        <legend>Pathvariable 사용</legend>
+        <form action="https://google.com" id="myForm">
+            <input type="text" id="inp_name" name="inpName" placeholder="이름입력">
+            <input type="text" id="inp_age" name="inpAge" placeholder="나이입력">
+            <button type="submit">전송</button>
+        </form>
+    </fieldset>
+    <h2 th:text="${name} != null ? ${name} + '님의 나이는 ' + ${age} + '살 이네요' : '값을 입력해주세요'"></h2>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        const $myForm = document.getElementById("myForm")
+        $myForm.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            const $name = document.querySelector("#inp_name").value;
+            const $age = document.querySelector("#inp_age").value;
+
+            window.location.href = `/ex08/${$name}/${$age}`;
+        });
+    </script>
+</body>
+</html>
